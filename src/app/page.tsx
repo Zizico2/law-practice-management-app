@@ -1,7 +1,4 @@
-
 import TableApp from "../components/TableApp";
-
-
 
 export default async function Home() {
   return (
