@@ -5,7 +5,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -81,7 +80,6 @@ export default function ResponsiveDrawer() {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
@@ -117,14 +115,20 @@ export default function ResponsiveDrawer() {
           onClose={handleDrawerClose}
           sx={{
             display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
+            // "& .MuiDrawer-paper": {
+            //   boxSizing: "border-box",
+            //   width: drawerWidth,
+            // },
           }}
           slotProps={{
             root: {
               keepMounted: true, // Better open performance on mobile.
+            },
+            paper: {
+              sx: {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
             },
           }}
         >
@@ -132,12 +136,16 @@ export default function ResponsiveDrawer() {
         </Drawer>
         <Drawer
           variant="permanent"
+          slotProps={{
+            paper: {
+              sx: {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            },
+          }}
           sx={{
             display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
           }}
           open
         >
